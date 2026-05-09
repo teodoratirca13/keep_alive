@@ -20,6 +20,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    timeout-minutes: 5
+
     steps:
 
       - name: Call FoodResq listings endpoint
@@ -34,4 +36,4 @@ jobs:
 
             --fail \
 
-            --max-time 30
+            --max-time 300
