@@ -1,0 +1,22 @@
+name: Keep FoodResq Backend Alive
+
+on:
+  schedule:
+    - cron: "*/10 7-21 * * *"
+      timezone: "Europe/Bucharest"
+    - cron: "0 22 * * *"
+      timezone: "Europe/Bucharest"
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call FoodResq listings endpoint
+        run: |
+          curl --request GET \
+            --url "https://foodresq-backend.onrender.com/api/listings" \
+            --header "Content-Type: application/json" \
+            --fail \
+            --max-time 30
